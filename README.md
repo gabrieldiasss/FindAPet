@@ -50,6 +50,8 @@
 
 [] O usuáro (que participou das doações) deve está ligado a ORG
 
+[] Email e username precisam ser unicos
+
 [] Para listar os pets, obrigatoriamente precisamos informar a cidade
 [] Usuário pode fazer transferência de no máximo R$1K por dia
 [] O usuário que quer adotar, entrará em contato com a ORG através de um chat
