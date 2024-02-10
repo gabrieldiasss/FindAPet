@@ -11,19 +11,11 @@ export async function register(request: FastifyRequest, reply: FastifyReply) {
     phone: z.string().optional(),
     address: z.string().optional(),
     residence: z.string().optional(),
-    password_hash: z.string().min(8),
+    password: z.string().min(8),
   });
 
-  const {
-    username,
-    name,
-    email,
-    bio,
-    phone,
-    address,
-    residence,
-    password_hash,
-  } = registerBodySchema.parse(request.body);
+  const { username, name, email, bio, phone, address, residence, password } =
+    registerBodySchema.parse(request.body);
 
   try {
     const registerUseCase = makeRegisterUseCase();
@@ -36,7 +28,7 @@ export async function register(request: FastifyRequest, reply: FastifyReply) {
       phone,
       address,
       residence,
-      password_hash,
+      password,
     });
   } catch (err) {
     throw new Error("Error");
