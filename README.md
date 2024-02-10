@@ -18,7 +18,7 @@
 ### Usuário
 
 [] Deve ser possível cadastrar um usuário (Nome, Email, tipo de usuário, Senha)
-[] Deve ser possível editar um usuário (Nome, Bio, telefone, Tipo de residencia, Endreço)
+[] Deve ser possível editar um usuário (Nome, Bio, telefone, Tipo de residencia, Endereço)
 [] Deve ser possível visualizar o perfil do usuário
 [] Deve ser possível listar todos os pets disponíveis para adoção em uma cidade
 [] Deve ser possível filtrar pets por suas características

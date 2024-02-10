@@ -1,0 +1,17 @@
+# docker ps => lista todos os containers que estão rodando
+# docker stop => para de rodar os containers
+# docker rm gympass => deleta o container
+# docker compose up => subir container
+# docker compose stop => parar todos os containers da aplicação
+
+version: "3"
+
+services:
+  gympass:
+    image: bitnami/postgresql
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRESQL_USERNAME=docker
+      - POSTGRESQL_PASSWORD=docker
+      - POSTGRESQL_DATABASE=findapet
