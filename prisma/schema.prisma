@@ -21,6 +21,7 @@ model User {
   email String @unique
   password_hash String
   created_at DateTime @default(now())
+  updated_at DateTime? @updatedAt @default(now())
 
   @@map("users")
 }

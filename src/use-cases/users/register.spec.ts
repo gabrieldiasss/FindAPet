@@ -1,16 +1,16 @@
-import { InMemomryUsersRepository } from "@/repositories/in-memory/users-repository";
+import { InMemomoryUsersRepository } from "@/repositories/in-memory/users-repository";
 import { describe, it, expect, beforeEach } from "vitest";
 import { RegisterUseCase } from "./register";
 import { EmailAlreadyExistsError } from "../errors/EmailAlreadyExistsError";
 import { UsernameAlreadyExistsError } from "../errors/UsernameAlreadyExistsError";
 import { compare } from "bcryptjs";
 
-let usersRepository: InMemomryUsersRepository;
+let usersRepository: InMemomoryUsersRepository;
 let registerUserUseCase: RegisterUseCase;
 
 describe("Register user", () => {
   beforeEach(() => {
-    usersRepository = new InMemomryUsersRepository();
+    usersRepository = new InMemomoryUsersRepository();
     registerUserUseCase = new RegisterUseCase(usersRepository);
   });
 
