@@ -4,6 +4,7 @@ import { IdUserNotFoundError } from "../errors/IdUserNotFoundError";
 import { UsernameAlreadyExistsError } from "../errors/UsernameAlreadyExistsError";
 
 interface UpdateUserProfileUseCaseRequest {
+  userId: string;
   username?: string;
   name?: string;
   bio?: string;
@@ -19,17 +20,15 @@ interface UpdateUserProfileUseCaseResponse {
 export class UpdateUserProfileUseCase {
   constructor(private usersRepository: UsersRepository) {}
 
-  async execute(
-    userId: string,
-    {
-      username,
-      residence,
-      address,
-      bio,
-      name,
-      phone,
-    }: UpdateUserProfileUseCaseRequest
-  ): Promise<UpdateUserProfileUseCaseResponse> {
+  async execute({
+    userId,
+    username,
+    residence,
+    address,
+    bio,
+    name,
+    phone,
+  }: UpdateUserProfileUseCaseRequest): Promise<UpdateUserProfileUseCaseResponse> {
     const findId = await this.usersRepository.findById(userId);
 
     if (!findId) {

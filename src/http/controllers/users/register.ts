@@ -1,10 +1,12 @@
+import { EmailAlreadyExistsError } from "@/use-cases/errors/EmailAlreadyExistsError";
+import { UsernameAlreadyExistsError } from "@/use-cases/errors/UsernameAlreadyExistsError";
 import { makeRegisterUseCase } from "@/use-cases/factories/make-register-use-case";
 import { FastifyReply, FastifyRequest } from "fastify";
 import { z } from "zod";
 
 export async function register(request: FastifyRequest, reply: FastifyReply) {
   const registerBodySchema = z.object({
-    username: z.string(),
+    username: z.string().trim(),
     name: z.string().optional(),
     email: z.string().email(),
     bio: z.string().optional(),
@@ -20,7 +22,7 @@ export async function register(request: FastifyRequest, reply: FastifyReply) {
   try {
     const registerUseCase = makeRegisterUseCase();
 
-    await registerUseCase.execute({
+    const registerUser = await registerUseCase.execute({
       username,
       name,
       email,
@@ -30,9 +32,8 @@ export async function register(request: FastifyRequest, reply: FastifyReply) {
       residence,
       password,
     });
+    return reply.status(201).send({ registerUser });
   } catch (err) {
-    throw new Error("Error");
+    return reply.status(409).send({ message: err.message });
   }
-
-  return reply.status(201).send();
 }

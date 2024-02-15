@@ -22,6 +22,7 @@ export class PrismaUsersRepository implements UsersRepository {
 
     return user;
   }
+
   async updateProfile(userId: string, data: Prisma.UserUncheckedUpdateInput) {
     const user = await prisma.user.update({
       where: {
